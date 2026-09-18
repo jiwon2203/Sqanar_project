@@ -1,0 +1,113 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}QR 시스템{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <style>
+      #chatbot-icon {
+        position: fixed;
+        bottom: 80px;
+        right: 30px;
+        font-size: 48px;
+        cursor: pointer;
+      }
+      .nav-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #f0f0f0;
+        text-align: center;
+        padding: 10px 0;
+      }
+      .nav-bar button {
+        margin: 0 10px;
+      }
+      /* [추가] 모달 기본 스타일 */
+      #loginModal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
+      #loginModal .modal-content {
+        background: #fff;
+        padding: 20px;
+        width: 360px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+      #loginModal h3 {
+        margin-top: 0;
+      }
+      #loginModal .actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+      #loginModal .actions a {
+        display: inline-block;
+        padding: 6px 12px;
+        background: #2c67ff;
+        color: #fff;
+        border-radius: 6px;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">{% block content %}{% endblock %}</div>
+
+    <!-- 공통 하단 버튼 -->
+    <div class="nav-bar">
+      <a href="{{ url_for('history.history') }}"><button>히스토리</button></a>
+      <a href="{{ url_for('home.home') }}"><button>홈</button></a>
+      <a href="{{ url_for('settings.settings_page') }}"><button>설정</button></a>
+    </div>
+
+    <!-- 챗봇 아이콘 -->
+    <div id="chatbot-icon" onclick="goTo('chatbot')">🤖</div>
+
+    <!-- 로그인 유도 모달 -->
+    <div id="loginModal">
+      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle">
+        <h3 id="loginModalTitle">안내</h3>
+        <p style="margin:12px 0;">더 많은 정보를 원하신다면 회원 로그인을 하세요.</p>
+        <div class="actions">
+          <button id="modalCloseBtn" type="button">닫기</button>
+          <a id="modalLoginBtn" href="/auth/login">로그인하기</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function goTo(page) {
+        window.location.href = "/" + page;
+      }
+
+      // 모달 제어
+      (function () {
+        const modal = document.getElementById("loginModal");
+        const closeBtn = document.getElementById("modalCloseBtn");
+        if (closeBtn) closeBtn.onclick = () => (modal.style.display = "none");
+
+        // ESC 키로 닫기
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && modal && modal.style.display === "flex") {
+            modal.style.display = "none";
+          }
+        });
+      })();
+    </script>
+
+    {% block extra_script %}{% endblock %}
+  </body>
+</html>

@@ -1,0 +1,72 @@
+# --- 공통 및 환경 변수 ---
+.env
+.env.*
+!.env.example
+
+*.log
+.DS_Store
+Thumbs.db
+
+.vscode/
+.idea/
+
+# --- Python (sqanar_be) ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.ipynb_checkpoints/
+
+venv/
+.venv/
+env/
+ENV/
+
+.pytest_cache/
+.mypy_cache/
+
+# --- AI 모델 및 대용량 파일 ---
+*.pt
+*.pth
+*.bin
+*.onnx
+*.safetensors
+*.h5
+*.pkl
+*.pickle
+*.joblib
+
+# --- Dataset ---
+data/
+dataset/
+datasets/
+
+# --- Node / React (sqanar_fe) ---
+node_modules/
+dist/
+build/
+.npm/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- React Native / Expo ---
+.expo/
+.expo-shared/
+.metro-health-check*
+
+# --- Android ---
+android/.gradle/
+android/local.properties
+android/**/build/
+android/**/captures/
+android/.cxx/
+
+# --- iOS ---
+ios/Pods/
+ios/build/
+ios/DerivedData/
+
+# --- OS / IDE ---
+*.swp
+*.swo

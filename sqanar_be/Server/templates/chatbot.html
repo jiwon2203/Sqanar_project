@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block title %}AI 챗봇{% endblock %}
+
+{% block content %}
+<h2 style="margin: 16px 0;">AI 챗봇</h2>
+<p style="color:#666; margin-bottom: 8px;">
+  모드: <span id="chat-mode" class="badge">{{ mode }}</span>
+</p>
+
+<div id="chat-wrap" class="glass-card" style="padding:16px; max-width:900px;">
+  <div id="chat-log" style="height: 50vh; overflow-y:auto; padding:8px; background:#fff; border-radius:12px; border:1px solid #e5e7eb;"></div>
+
+  <form id="chat-form" style="display:flex; gap:8px; margin-top:12px;">
+    <input id="chat-input" type="text" placeholder="메시지를 입력하세요…" required
+           style="flex:1; padding:12px; border:1px solid #e5e7eb; border-radius:10px;">
+    <button type="submit" class="btn-primary">보내기</button>
+  </form>
+</div>
+{% endblock %}
+
+{% block extra_script %}
+<style>
+  .badge {
+    display:inline-block; padding:2px 8px; border-radius:999px;
+    background:#eef2ff; color:#3730a3; font-weight:600; font-size:12px;
+  }
+  .bubble { max-width: 75%; padding:10px 12px; border-radius:14px; margin:6px 0; line-height:1.4; }
+  .me     { margin-left:auto; background:#e0f2fe; }
+  .bot    { margin-right:auto; background:#f3f4f6; }
+  .meta   { font-size:12px; color:#666; margin-top:2px; }
+  .srcs   { margin-top:6px; font-size:13px; color:#374151; }
+  .spinner{ font-size:13px; color:#6b7280; margin:8px 0; }
+</style>
+
+<script>
+  const chatForm = document.getElementById('chat-form');
+  const chatInput = document.getElementById('chat-input');
+  const chatLog = document.getElementById('chat-log');
+
+  function addBubble(text, who='bot', extraHtml='') {
+    const wrap = document.createElement('div');
+    wrap.className = `bubble ${who === 'me' ? 'me' : 'bot'}`;
+    wrap.innerHTML = `<div>${escapeHtml(text).replace(/\n/g,'<br>')}</div>${extraHtml}`;
+    chatLog.appendChild(wrap);
+    chatLog.scrollTop = chatLog.scrollHeight;
+  }
+
+  function addSpinner(id='spinner') {
+    const el = document.createElement('div');
+    el.id = id; el.className = 'spinner';
+    el.textContent = '응답 생성중…';
+    chatLog.appendChild(el);
+    chatLog.scrollTop = chatLog.scrollHeight;
+  }
+
+  function removeSpinner(id='spinner') {
+    const el = document.getElementById(id);
+    if (el) el.remove();
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  }
+
+  chatForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const q = chatInput.value.trim();
+    if (!q) return;
+
+    // 내 말풍선
+    addBubble(q, 'me');
+    chatInput.value = '';
+    addSpinner();
+
+    try {
+      const res = await fetch('/chatbot/api', {  // ✅ Flask 프록시로 호출 (CORS 없음)
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({ query: q })
+      });
+
+      const data = await res.json();
+      removeSpinner();
+
+      if (!res.ok) {
+        addBubble(`오류: ${data?.error || '응답 실패'}`, 'bot');
+        return;
+      }
+
+      // FastAPI가 그대로 반환한 dict 가정: { answer, mode, sources? }
+      const answer = data.answer || '(응답 없음)';
+      const mode = data.mode || 'chat';
+      const sources = Array.isArray(data.sources) ? data.sources : [];
+
+      // 모드/출처 메타
+      let meta = `<div class="meta">mode: <b>${escapeHtml(mode)}</b></div>`;
+      if (sources.length) {
+        meta += `<div class="srcs">📚 출처<ul style="margin:4px 0 0 18px;">${
+          sources.slice(0,5).map(s=>`<li>${escapeHtml(String(s))}</li>`).join('')
+        }</ul></div>`;
+      }
+
+      addBubble(answer, 'bot', meta);
+
+    } catch (err) {
+      removeSpinner();
+      addBubble(`네트워크 오류: ${err}`, 'bot');
+    }
+  });
+</script>
+{% endblock %}

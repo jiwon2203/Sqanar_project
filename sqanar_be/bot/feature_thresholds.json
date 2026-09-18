@@ -1,0 +1,350 @@
+{
+  "is_punycode": {
+    "direction": "higher_is_risk",
+    "t_med": 0.0,
+    "t_high": 0.0,
+    "q": {
+      "p10": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 0.0,
+      "p90": 0.0
+    }
+  },
+  "url_length": {
+    "direction": "lower_is_risk",
+    "t_med": 25.0,
+    "t_high": 35.0,
+    "q": {
+      "p10": 21.0,
+      "p25": 25.0,
+      "p50": 35.0,
+      "p75": 56.0,
+      "p90": 81.0
+    }
+  },
+  "domain_length": {
+    "direction": "higher_is_risk",
+    "t_med": 24.0,
+    "t_high": 30.0,
+    "q": {
+      "p10": 12.0,
+      "p25": 15.0,
+      "p50": 18.0,
+      "p75": 24.0,
+      "p90": 30.0
+    }
+  },
+  "tld_length": {
+    "direction": "higher_is_risk",
+    "t_med": 3.0,
+    "t_high": 4.0,
+    "q": {
+      "p10": 2.0,
+      "p25": 3.0,
+      "p50": 3.0,
+      "p75": 3.0,
+      "p90": 4.0
+    }
+  },
+  "path_length": {
+    "direction": "lower_is_risk",
+    "t_med": 0.0,
+    "t_high": 1.0,
+    "q": {
+      "p10": 0.0,
+      "p25": 0.0,
+      "p50": 1.0,
+      "p75": 19.0,
+      "p90": 42.0
+    }
+  },
+  "query_length": {
+    "direction": "higher_is_risk",
+    "t_med": 0.0,
+    "t_high": 0.0,
+    "q": {
+      "p10": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 0.0,
+      "p90": 0.0
+    }
+  },
+  "subdomain_count": {
+    "direction": "lower_is_risk",
+    "t_med": 1.0,
+    "t_high": 1.0,
+    "q": {
+      "p10": 0.0,
+      "p25": 1.0,
+      "p50": 1.0,
+      "p75": 1.0,
+      "p90": 1.0
+    }
+  },
+  "char_ratio": {
+    "direction": "higher_is_risk",
+    "t_med": 0.19576423128641865,
+    "t_high": 0.22727272727272727,
+    "q": {
+      "p10": 0.14634146341463414,
+      "p25": 0.17073170731707318,
+      "p50": 0.19576423128641865,
+      "p75": 0.22727272727272727,
+      "p90": 0.25
+    }
+  },
+  "digit_ratio": {
+    "direction": "higher_is_risk",
+    "t_med": 0.0,
+    "t_high": 0.08333333333333333,
+    "q": {
+      "p10": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 0.08333333333333333,
+      "p90": 0.14285714285714285
+    }
+  },
+  "dot_count": {
+    "direction": "lower_is_risk",
+    "t_med": 2.0,
+    "t_high": 2.0,
+    "q": {
+      "p10": 2.0,
+      "p25": 2.0,
+      "p50": 2.0,
+      "p75": 3.0,
+      "p90": 3.0
+    }
+  },
+  "hyphen_count": {
+    "direction": "lower_is_risk",
+    "t_med": 1.0,
+    "t_high": 3.0,
+    "q": {
+      "p10": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 1.0,
+      "p90": 3.0
+    }
+  },
+  "slash_count": {
+    "direction": "lower_is_risk",
+    "t_med": 2.0,
+    "t_high": 3.0,
+    "q": {
+      "p10": 2.0,
+      "p25": 2.0,
+      "p50": 3.0,
+      "p75": 4.0,
+      "p90": 5.0
+    }
+  },
+  "question_count": {
+    "direction": "lower_is_risk",
+    "t_med": 0.0,
+    "t_high": 0.0,
+    "q": {
+      "p10": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 0.0,
+      "p90": 0.0
+    }
+  },
+  "has_hash": {
+    "direction": "higher_is_risk",
+    "t_med": 0.0,
+    "t_high": 0.0,
+    "q": {
+      "p10": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 0.0,
+      "p90": 0.0
+    }
+  },
+  "has_at_symbol": {
+    "direction": "higher_is_risk",
+    "t_med": 0.0,
+    "t_high": 0.0,
+    "q": {
+      "p10": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 0.0,
+      "p90": 0.0
+    }
+  },
+  "is_https": {
+    "direction": "lower_is_risk",
+    "t_med": 1.0,
+    "t_high": 1.0,
+    "q": {
+      "p10": 0.0,
+      "p25": 1.0,
+      "p50": 1.0,
+      "p75": 1.0,
+      "p90": 1.0
+    }
+  },
+  "encoding": {
+    "direction": "lower_is_risk",
+    "t_med": 0.0,
+    "t_high": 0.0,
+    "q": {
+      "p10": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 0.0,
+      "p90": 0.0
+    }
+  },
+  "contains_port": {
+    "direction": "higher_is_risk",
+    "t_med": 0.0,
+    "t_high": 0.0,
+    "q": {
+      "p10": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 0.0,
+      "p90": 0.0
+    }
+  },
+  "file_extension": {
+    "direction": "lower_is_risk",
+    "t_med": 0.0,
+    "t_high": 0.0,
+    "q": {
+      "p10": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 0.0,
+      "p90": 1.0
+    }
+  },
+  "contains_ip": {
+    "direction": "higher_is_risk",
+    "t_med": 0.0,
+    "t_high": 0.0,
+    "q": {
+      "p10": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 0.0,
+      "p90": 0.0
+    }
+  },
+  "phishing_keywords": {
+    "direction": "higher_is_risk",
+    "t_med": 0.0,
+    "t_high": 0.0,
+    "q": {
+      "p10": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 0.0,
+      "p90": 0.0
+    }
+  },
+  "free_domain": {
+    "direction": "higher_is_risk",
+    "t_med": 0.0,
+    "t_high": 0.0,
+    "q": {
+      "p10": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 0.0,
+      "p90": 0.0
+    }
+  },
+  "shortened_url": {
+    "direction": "lower_is_risk",
+    "t_med": 0.0,
+    "t_high": 0.0,
+    "q": {
+      "p10": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 0.0,
+      "p90": 0.0
+    }
+  },
+  "typosquatting": {
+    "direction": "higher_is_risk",
+    "t_med": 0.0,
+    "t_high": 0.0,
+    "q": {
+      "p10": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 0.0,
+      "p90": 0.0
+    }
+  },
+  "whois_available": {
+    "direction": "higher_is_risk",
+    "t_med": 0.0,
+    "t_high": 0.0,
+    "q": {
+      "p10": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 0.0,
+      "p90": 0.0
+    }
+  },
+  "extUrlRatio": {
+    "direction": "lower_is_risk",
+    "t_med": 0.0,
+    "t_high": 0.0,
+    "q": {
+      "p10": 0.0,
+      "p25": 0.0,
+      "p50": 0.062,
+      "p75": 0.81,
+      "p90": 1.0
+    }
+  },
+  "externalAnchorRatio": {
+    "direction": "lower_is_risk",
+    "t_med": 0.0,
+    "t_high": 0.0,
+    "q": {
+      "p10": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 0.28425,
+      "p90": 0.8723000000000004
+    }
+  },
+  "invalidAnchorRatio": {
+    "direction": "higher_is_risk",
+    "t_med": 0.019,
+    "t_high": 0.172,
+    "q": {
+      "p10": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 0.019,
+      "p90": 0.172
+    }
+  },
+  "cert_total_days": {
+    "direction": "lower_is_risk",
+    "t_med": 89.0,
+    "t_high": 90.0,
+    "q": {
+      "p10": 89.0,
+      "p25": 89.0,
+      "p50": 89.0,
+      "p75": 90.0,
+      "p90": 393.0
+    }
+  }
+}
